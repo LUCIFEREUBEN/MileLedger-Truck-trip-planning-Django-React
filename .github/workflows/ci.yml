@@ -61,6 +61,7 @@ jobs:
         with:
           python-version: "3.13"
       - run: pip install -r ../backend/requirements.txt
+      - run: python ../backend/manage.py migrate
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm e2e
