@@ -12,7 +12,7 @@ This repository is ready for a Vercel frontend and a Render Docker web service b
    - `CORS_ALLOWED_ORIGINS` to the final Vercel HTTPS origin.
    - `CSRF_TRUSTED_ORIGINS` to the same HTTPS origin.
 4. Keep `DJANGO_DEBUG=false` and `DEMO_MODE=false` for real routing. Set `DEMO_MODE=true` only if the public review should also support the two labelled fixtures.
-5. Deploy. Render builds `backend/Dockerfile`, runs `python manage.py migrate` before release, and checks `/api/health/`.
+5. Deploy. Render builds `backend/Dockerfile`; the container runs `python manage.py migrate` before Gunicorn starts, and Render checks `/api/health/`.
 6. Verify `https://<render-host>/api/health/` returns `{"status":"ok"}` and `route_mode:"live"`.
 
 The blueprint generates `DJANGO_SECRET_KEY` and connects `DATABASE_URL` to the managed PostgreSQL database. Do not put the routing key in Vercel.
