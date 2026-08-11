@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+backend/db.sqlite3
+backend/staticfiles/*
+!backend/staticfiles/.gitkeep
+
+# Node
+node_modules/
+.pnpm-store/
+frontend/dist/
+frontend/test-results/
+frontend/playwright-report/
+*.tsbuildinfo
+*.log
+
+# Local configuration
+.env
+frontend/.env
+.DS_Store
+Thumbs.db
+
+# Review scratch space
+.tmp/
