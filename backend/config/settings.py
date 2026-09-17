@@ -59,9 +59,11 @@ TEMPLATES = [
 WSGI_APPLICATION = "config.wsgi.application"
 ASGI_APPLICATION = "config.asgi.application"
 
+USE_SQLITE = os.getenv("MILELEDGER_USE_SQLITE", "false").lower() == "true"
+database_url = None if USE_SQLITE else os.getenv("DATABASE_URL")
 DATABASES = {
-    "default": dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}", conn_max_age=60
+    "default": dj_database_url.parse(
+        database_url or f"sqlite:///{BASE_DIR / 'db.sqlite3'}", conn_max_age=60
     )
 }
 AUTH_PASSWORD_VALIDATORS = []

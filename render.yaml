@@ -10,6 +10,10 @@ services:
         value: "false"
       - key: DEMO_MODE
         value: "false"
+      # Render's free PostgreSQL databases expire after 30 days. Keep this
+      # assessment demo deployable at no cost by using the container's SQLite DB.
+      - key: MILELEDGER_USE_SQLITE
+        value: "true"
       - key: DJANGO_SECRET_KEY
         generateValue: true
       - key: DATABASE_URL
